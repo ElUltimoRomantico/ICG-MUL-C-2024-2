@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dibuja Figuras</title>
+  <meta charset="UTF-8">
+  <title>Dibujo Dinámico</title>
   <style>
     #canvas {
       border: 1px solid black;
@@ -9,29 +10,37 @@
   </style>
 </head>
 <body>
-  <h1>Dibuja Figuras</h1>
+  <h1>Dibujo Dinámico</h1>
   <form>
-    <label for="figura">Figura:</label>
-    <input type="text" id="figura" name="figura"><br><br>
-    <label for="coords">Coordenadas:</label>
-    <input type="radio" id="cartesianas" name="coords" value="cartesianas">
-    <label for="cartesianas">Cartesianas</label>
-    <input type="radio" id="polares" name="coords" value="polares">
-    <label for="polares">Polares</label><br><br>
-    <label for="x">X:</label>
-    <input type="number" id="x" name="x"><br><br>
-    <label for="y">Y:</label>
-    <input type="number" id="y" name="y"><br><br>
-    <label for="tamaño">Tamaño:</label>
-    <input type="number" id="tamaño" name="tamaño"><br><br>
-    <label for="color">Color:</label>
-    <input type="color" id="color" name="color"><br><br>
-    <button type="button" onclick="dibujaFigura()">Dibuja</button>
+    <label for="shape">Figura:</label>
+    <select id="shape" name="shape">
+      <option value="circulo">Círculo</option>
+      <option value="cuadrado">Cuadrado</option>
+      <option value="triangulo">Triángulo</option>
+      <option value="poligono">Polígono</option>
+    </select>
+    <br><br>
+    <label for="x">Coordenada X:</label>
+    <input type="number" id="x" name="x" value="200">
+    <br><br>
+    <label for="y">Coordenada Y:</label>
+    <input type="number" id="y" name="y" value="200">
+    <br><br>
+    <label for="radio">Radio:</label>
+    <input type="number" id="radio" name="radio" value="50">
+    <br><br>
+    <label for="lados">Número de lados:</label>
+    <input type="number" id="lados" name="lados" value="4">
+    <br><br>
+    <label for="colorRelleno">Color de relleno:</label>
+    <input type="color" id="colorRelleno" name="colorRelleno" value="#ffffff">
+    <br><br>
+    <label for="colorBorde">Color de borde:</label>
+    <input type="color" id="colorBorde" name="colorBorde" value="#000000">
+    <br><br>
+    <button type="button" onclick="dibujarFigura()">Dibujar</button>
   </form>
   <canvas id="canvas" width="400" height="400"></canvas>
-
-  <script src="figuras2D.js">
-    
-  </script>
+  <script src="figuras2D.js"></script>
 </body>
 </html>
