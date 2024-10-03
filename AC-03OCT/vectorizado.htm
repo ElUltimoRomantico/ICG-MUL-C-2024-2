@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Figura Vectorizada</title>
-    <script src="vectorizado.js" defer></script>
+    <title>Polígono Vectorizado</title>
 </head>
 <body>
-    <h1>Figura Poligonal Vectorizada</h1>
-    <button onclick="generarFigura()">Generar Polígono</button>
+    <h1>Polígono Vectorizado</h1>
+    <div id="svg-container" style="border:1px solid black; width:500px; height:500px;"></div>
+    <br>
+    <button onclick="generarFigura()">Generar Figura</button>
     <p id="tipo-poligono"></p>
-    <div id="svg-container"></div>
+
+    <script src="vectorizado.js"></script>
 </body>
 </html>
-

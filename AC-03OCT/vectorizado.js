@@ -75,7 +75,8 @@ function dibujarPoligonoVectorizado(puntos) {
     let puntosStr = puntos.map(p => `${p.getX()},${p.getY()}`).join(" ");
     poligono.setAttribute("points", puntosStr);
     poligono.setAttribute("stroke", "black");
-    poligono.setAttribute("fill", "none");
+    poligono.setAttribute("stroke-width", "2");
+    poligono.setAttribute("fill", "rgba(0, 150, 250, 0.3)"); // Relleno opcional
 
     svg.appendChild(poligono);
     svgContainer.appendChild(svg);
