@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Figura Rasterizada</title>
-    <script src="rasterizado.js" defer></script>
+    <title>Polígono Rasterizado</title>
 </head>
 <body>
-    <h1>Figura Poligonal Rasterizada</h1>
-    <button onclick="generarFigura()">Generar Polígono</button>
+    <h1>Polígono Rasterizado</h1>
+    <canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
+    <br>
+    <button onclick="generarFigura()">Generar Figura</button>
     <p id="tipo-poligono"></p>
-    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script src="rasterizado.js"></script>
 </body>
 </html>
 
