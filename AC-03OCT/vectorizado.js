@@ -14,8 +14,8 @@ class Punto {
 
 // Función para generar SVG
 function dibujarPoligonoVectorizado(puntos) {
-    console.log("Dibujando polígono vectorizado..."); // Debugging
-
+    const svgContainer = document.getElementById('svg-container');
+    svgContainer.innerHTML = ""; // Limpiar el contenedor previo
     const svgNS = "http://www.w3.org/2000/svg";
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("width", "500");
@@ -30,18 +30,49 @@ function dibujarPoligonoVectorizado(puntos) {
     poligono.setAttribute("fill", "none");
 
     svg.appendChild(poligono);
-    document.getElementById('svg-container').appendChild(svg);
+    svgContainer.appendChild(svg);
 }
 
-// Ejemplo de uso
-window.onload = function() {
-    const puntos = [
-        new Punto(100, 150),
-        new Punto(200, 50),
-        new Punto(300, 150),
-        new Punto(250, 250),
-        new Punto(150, 250)
-    ];
+// Función para determinar si un polígono es cóncavo o convexo
+function esConvexo(puntos) {
+    let esPositivo = false;
+    let esNegativo = false;
+
+    for (let i = 0; i < puntos.length; i++) {
+        const p0 = puntos[i];
+        const p1 = puntos[(i + 1) % puntos.length];
+        const p2 = puntos[(i + 2) % puntos.length];
+
+        const dx1 = p1.getX() - p0.getX();
+        const dy1 = p1.getY() - p0.getY();
+        const dx2 = p2.getX() - p1.getX();
+        const dy2 = p2.getY() - p1.getY();
+
+        const cruz = dx1 * dy2 - dy1 * dx2;
+
+        if (cruz > 0) esPositivo = true;
+        if (cruz < 0) esNegativo = true;
+
+        if (esPositivo && esNegativo) return false;
+    }
+
+    return true;
+}
+
+// Función para generar una figura aleatoria
+function generarFigura() {
+    const puntos = [];
+
+    for (let i = 0; i < 5; i++) {
+        const x = Math.random() * 400 + 50;
+        const y = Math.random() * 400 + 50;
+        puntos.push(new Punto(x, y));
+    }
 
     dibujarPoligonoVectorizado(puntos);
-};
+
+    const esConvexoPoligono = esConvexo(puntos);
+    const tipo = esConvexoPoligono ? "convexo" : "cóncavo";
+    
+    document.getElementById('tipo-poligono').innerText = `El polígono es ${tipo}.`;
+}
